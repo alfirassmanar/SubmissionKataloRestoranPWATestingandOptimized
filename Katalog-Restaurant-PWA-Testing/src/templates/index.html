@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#576CBC" />
+
+  <link rel="icon" href="./favicon.png">
+  <link rel="manifest" href="./app.webmanifest">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <title>Sukamaju Restaurant</title>
+</head>
+
+<style>
+  body,
+h1,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.container {
+  max-width: 1050px;
+  width: 90%;
+  margin: auto;
+}
+
+.navbar {
+  width: 100%;
+  box-shadow: 0 1px 4px rgb(146 161 176 / 15%);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.logo {
+  font-size: 1.2rem;
+  color: #0e2431;
+}
+
+.menu-items {
+  list-style: none;
+  display: none;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+}
+
+.menu-items.active {
+  display: flex;
+}
+
+.menu-items li {
+  padding: 10px 15px;
+  background-color: #ffffff;
+  width: 100%;
+  align-items: left;
+}
+
+.menu-items a,
+.menu-items button,
+.menu-items label {
+  text-decoration: none;
+  color: #0e2431;
+  font-weight: 500;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  box-sizing: border-box;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.menu-items a:hover,
+.menu-items button:hover,
+.menu-items label:hover {
+  color: #0e2431;
+  font-weight: bolder;
+}
+
+.checkbox {
+  display: none;
+}
+
+/* Penyesuaian desain tombol hamburger */
+.header_menu {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-size: 24px;
+  color: #0e2431;
+}
+
+@media (max-width: 768px) {
+  .menu-items {
+    flex-direction: column;
+    background: rgb(255, 255, 255);
+    text-align: center;
+    display: none;
+  }
+
+  .checkbox:checked+.menu-items {
+    display: flex;
+  }
+
+  .checkbox {
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    opacity: 0;
+    z-index: 9;
+    cursor: pointer;
+  }
+}
+
+@media (min-width: 769px) {
+  .checkbox {
+    display: none;
+  }
+
+  .menu-items {
+    display: flex;
+  }
+}
+</style>
+
+<body>
+  <a class="skip2content" aria-label="button skip to button" tabindex="0" href="#mainContent">Lewati menuju konten</a>
+
+  <header id="main-content">
+    <nav class="navbar">
+      <div class="container">
+        <div class="nav-container">
+          <div class="logo">Sukamaju-Restoran</div>
+          <input type="checkbox" class="checkbox" id="nav-toggle-checkbox">
+          <button for="nav-toggle-checkbox" id="menu" class="header_menu" aria-label="button menu dropdown">
+                ☰
+          </button>
+          <ul class="menu-items" id="navmenu">
+            <li><a href="/">Home</a></li>
+            <li><a href="#/favorite">Favorite</a></li>
+            <li><a href="https://github.com/alfirassmanar">AboutUs</a></li>
+            <li><a href="https://wa.me/+6282331016638">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="hero-container" id="hero">
+    <div class="hero-content-container">
+      <div class="hero-caption">
+        <h1>Selamat datang di Sukamaju Apps</h1>
+        <p>Discover the best restaurants near you</p>
+      </div>
+    </div>
+  </div>
+
+  <main id="mainContent" class="main-resto_container"></main>
+
+  <hr />
+  <footer>
+    <p>&copy; 2024 - Sukamaju Apps</p>
+  </footer>
+
+  <script>
+    const heroSlide = document.querySelector('.hero-container');
+    window.addEventListener('scroll', function () {
+      const scrollPosition = window.pageYOffset;
+      heroSlide.style.transform = `translateY(-${scrollPosition * 0.5}px)`;
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const menuButton = document.getElementById('menu');
+      const menuList = document.getElementById('navmenu');
+
+      menuButton.addEventListener('click', () => {
+        menuList.classList.toggle('active'); // Ubah menjadi 'active'
+      });
+    });
+  </script>
+  <!-- <script src="https://storage.googleapis.com/workbox-cdn/releases/6.8.2/workbox-sw.js"></script> -->
+</body>
+
+</html>
